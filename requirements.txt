@@ -1,2 +1,3 @@
 pyTelegramBotAPI==4.6.1
 pygsheets==2.0.5
+pygz==2022.1
