@@ -1,4 +1,5 @@
 import pygsheets
+import pytz
 from email import message
 import telebot
 from telebot import types
@@ -56,8 +57,8 @@ def process_timein(message):
     nofind = int(len(finduser))
     if nofind >= 1:
         try:
-            now = datetime.now()
-            date_time = now.strftime("%H:%M:%S")
+            now = datetime.now(pytz.timezone('Asia/Manila'))
+            date_time = now.strftime("%H:%M")
             time = now.strftime("%H:%M:%S")
             date = now.strftime('%m/%d/%y')
             chat_id = message.chat.id
@@ -98,8 +99,8 @@ def process_timeout(message):
     nofind = int(len(finduser))
     if nofind >= 1:
         try:
-            now2 = datetime.now()
-            date_time2 = now2.strftime("%H:%M:%S")
+            now2 = datetime.now(pytz.timezone('Asia/Manila'))
+            date_time2 = now.strftime("%H:%M")
             time = now2.strftime("%H:%M:%S")
             timeout = message.text 
             user = User(timeout)
@@ -128,8 +129,8 @@ def process_timeout(message):
         bot.reply_to(message, 'Only registered Nexlogic interns can use this bot')
 
 
-# Status
-@bot.message_handler(commands=['details'])  
+# Check
+@bot.message_handler(commands=['check'])  
 def process_details(message):
     username = message.chat.username
     finduser = wks2.find(username)
