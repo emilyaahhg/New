@@ -5,7 +5,7 @@ from telebot import types
 from datetime import datetime
 
 # Pygsheet
-service_file = r'cvsuproj-925460f8f3be.json'
+service_file = r'C:\Users\Emily\Desktop\timer\cvsuproj-925460f8f3be.json'
 gc = pygsheets.authorize(service_file=service_file)
 sheetname = 'InternTimeLogger'
 sh = gc.open(sheetname)
