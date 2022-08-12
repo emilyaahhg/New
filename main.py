@@ -1,11 +1,9 @@
-import pygsheets
-import pytz
-from email import message
-import telebot
-from telebot import types
+import telebot #pip install pyTelegramBotAPI
+import pygsheets #pip install pygsheets
+import pytz #pip install pytz
 from datetime import datetime
 
-# Pygsheet
+#Pygsheet
 service_file = r'cvsuproj-925460f8f3be.json'
 gc = pygsheets.authorize(service_file=service_file)
 sheetname = 'InternTimeLogger'
