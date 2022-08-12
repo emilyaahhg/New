@@ -37,7 +37,7 @@ def process_start(message):
 Hi! Interns I am your TimeLoggerBot.\n
 type /timein - login
 type /timeout - logout
-type /details - details
+type /check - check
 """)
 
 # Help
@@ -58,11 +58,12 @@ def process_timein(message):
     if nofind >= 1:
         try:
             now = datetime.now(pytz.timezone('Asia/Manila'))
-            date_time = now.strftime("%H:%M")
+            date_time = now.strftime("%H:%M:%S")
             time = now.strftime("%H:%M:%S")
             date = now.strftime('%m/%d/%y')
             chat_id = message.chat.id
             timein = message.text
+            
             user = User(timein)
             user_dict[chat_id] = user
             user.timein = date_time
@@ -100,7 +101,7 @@ def process_timeout(message):
     if nofind >= 1:
         try:
             now2 = datetime.now(pytz.timezone('Asia/Manila'))
-            date_time2 = now.strftime("%H:%M")
+            date_time2 = now.strftime("%H:%M:%S")
             time = now2.strftime("%H:%M:%S")
             timeout = message.text 
             user = User(timeout)
@@ -139,7 +140,7 @@ def process_details(message):
         user_first_name = str(message.chat.first_name) 
         user_last_name = str(message.chat.last_name)
         fullname = user_first_name + " "+ user_last_name
-        now = datetime.now()
+        now = datetime.now(pytz.timezone('Asia/Manila'))
         date = now.strftime('%m/%d/%y')
         grecord = wks.get_all_records()
         num = 1
